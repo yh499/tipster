@@ -18,14 +18,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var decimalKey: UIButton!
     // calculated numbers
     @IBOutlet weak var minPercent: UILabel!
-    @IBOutlet weak var medPercent: UILabel!
-    @IBOutlet weak var maxPercent: UILabel!
+
     @IBOutlet weak var minTip: UILabel!
-    @IBOutlet weak var medTip: UILabel!
-    @IBOutlet weak var maxTip: UILabel!
+
     @IBOutlet weak var minEach: UILabel!
-    @IBOutlet weak var medEach: UILabel!
-    @IBOutlet weak var maxEach: UILabel!
+ 
     // sliders
     @IBOutlet weak var tipSlider: UISlider!
     @IBOutlet weak var groupSlider: UISlider!
@@ -118,8 +115,6 @@ class ViewController: UIViewController {
     
     @IBAction func tipSliderSlid(_ sender: Any) {
         minPercent.text = String(round(tipSlider.value)) + "%"
-        medPercent.text = String(round(tipSlider.value) + 5) + "%"
-        maxPercent.text = String(round(tipSlider.value) + 10) + "%"
         crunchNumbers()
     }
     
@@ -134,23 +129,13 @@ class ViewController: UIViewController {
             let group = Double(round(groupSlider.value))
             let minimumTip = round((input! * (tip/100))*100)/100
             let minPerPerson = (round(((input! + minimumTip)/group)*100))/100
-            let mediumTip = round((input! * ((tip + 5)/100))*100)/100
-            let medPerPerson = (round(((input! + mediumTip)/group)*100))/100
-            let maximumTip = round((input! * ((tip + 10)/100))*100)/100
-            let maxPerPerson = (round(((input! + maximumTip)/group)*100))/100
+
             minTip.text = String(minimumTip)
-            medTip.text = String(mediumTip)
-            maxTip.text = String(maximumTip)
             minEach.text = String(minPerPerson)
-            medEach.text = String(medPerPerson)
-            maxEach.text = String(maxPerPerson)
         }
     }
     
-
     
-    
-
 
 }
 
